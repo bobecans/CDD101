@@ -1,13 +1,14 @@
 # Robert Scully
-# using semaphone singal and wait to control two thread output.
+# using mutex semaphore to count a global varuable, which should give us the
+# out come of 3.
 
 CC=g++
 CFLAGS=-std=c++11 -pthread
-CFILES=signal.cpp Semaphore.cpp
+CFILES=mutexSema.cpp Semaphore.cpp
 HFILES=Semaphore.h
 
 ALL:$(CFILES) $(HFILES)
-	$(CC) $(CFLAGS) *.cpp -o SemaphoreThread $(DEBUGFLAGS)
+	$(CC) $(CFLAGS) *.cpp -o mutexResult $(DEBUGFLAGS)
 
 DEBUG: DEBUGFLAGS = -DDEBUG
 DEBUG: ALL

@@ -14,7 +14,7 @@ class Semaphore
 	    std::condition_variable m_condition;
 
 	public:
-	    Semaphore(unsigned int uiCount=0)
+	    Semaphore(int uiCount=1)
 		  : m_uiCount(uiCount) { };
 	    void Wait();
 	    void Signal();
