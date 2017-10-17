@@ -1,3 +1,10 @@
+/*! /Author: Robert Scully
+    /Created: 3-10-17
+
+  Using a semaphore to make a rendezvous of outputs.
+
+*/
+
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
@@ -24,6 +31,7 @@ void threadB2(std::shared_ptr<Semaphore> theSemaphore){
   theSemaphore->Signal();
 }
 
+/**< using main to output threads in a rendezvous  */
 int main(void){
   std::thread threadOne, threadTwo, threadThree, threadFour;
   std::shared_ptr<Semaphore> sem( new Semaphore);

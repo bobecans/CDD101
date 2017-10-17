@@ -1,3 +1,10 @@
+/*! /Author: Robert Scully
+    /Created: 3-10-17
+
+  To show the semaphores can be used to stop a thread from been first in.
+
+*/
+
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
