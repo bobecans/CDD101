@@ -1,3 +1,9 @@
+/*!  \Author: Robert Scully
+     \created: 25-10-17
+     \license: GNU GENERAL PUBLIC LICENSE
+     \Update: 13-11-17
+ */
+
 #include "Semaphore.h"
 /*! \class Semaphore
     \brief A Semaphore Implementation
@@ -7,8 +13,6 @@
 */
 
 
-
-
 void Semaphore::Wait()
 {
       std::unique_lock< std::mutex > lock(m_mutex);
@@ -16,16 +20,6 @@ void Semaphore::Wait()
       --m_uiCount;
 }
 
-template< typename R,typename P >
-bool Semaphore::Wait(const std::chrono::duration<R,P>& crRelTime)
-{
-      std::unique_lock< std::mutex > lock(m_mutex);
-      if (!m_condition.wait_for(lock,crRelTime,[&]()->bool{ return m_uiCount>0; })){
-	  return false;
-      }
-      --m_uiCount;
-      return true;
-}
 
 void Semaphore::Signal()
 {

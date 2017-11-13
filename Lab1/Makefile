@@ -1,4 +1,6 @@
 # Robert Scully
+# 3-10-17
+# license: GNU
 # using semaphone singal and wait to control two thread output.
 
 CC=g++

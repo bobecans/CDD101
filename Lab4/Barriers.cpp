@@ -1,32 +1,28 @@
-#include "Semaphore.h"
-#include <iostream>
-#include <thread>
+/*!  \Author: Robert Scully
+     \created: 25-10-17
+     \license: GNU GENERAL PUBLIC LICENSE
+     \Update: 13-11-17
+ */
 
-int N = 3;
-int count = 0;
-Semaphore mutex(1);
-Semaphore barrier1(0);
-Semaphore barrier2(1);
+#include "Barriers.h"
+/*! \class Barriers
+    \brief A Barriers Implementation
 
-int main(void)
+   Uses C++11 features such as mutex and condition variables to implement Barriers
+
+*/
+
+void Barriers::Wait()
 {
-  mutex.wait();
-  count++;
-  if(count == N){
-	barrier2.wait();
-	barrier1.singal();
-  }
-  mutex.singal();
-  barrier1.wait();
-  barrier1.singal();
+      std::unique_lock< std::mutex > lock(m_mutex);
+      m_condition.wait(lock,[&]()->bool{ return m_uiCount>0; });
+      --m_uiCount;
+}
 
-  mutex.wait();
-  count--;
-  if(count == 0){
-	barrier1.wait();
-	barrier2.singal();
-  }
-  mutex.singal();
-  barrier2.wait();
-  barrier2.singal();
+
+void Barriers::Signal()
+{
+      std::unique_lock< std::mutex > lock(m_mutex);
+      ++m_uiCount;
+      m_condition.notify_one();
 }

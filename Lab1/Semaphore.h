@@ -1,3 +1,8 @@
+/*!  \Author: Robert Scully
+     \created: 3-10-17
+     \license: GNU GENERAL PUBLIC LICENSE
+     \Update: 13-11-17
+ */
 #include <mutex>
 #include <condition_variable>
 /*! \class Semaphore

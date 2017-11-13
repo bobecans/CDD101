@@ -1,4 +1,6 @@
 # Robert Scully
+# license: GNU GENERAL PUBLIC LICENSE
+# created: 3-10-17 and modify: 13-11-17
 # using mutex semaphore to count a global varuable, which should give us the
 # out come of 3.
 
@@ -13,6 +15,6 @@ ALL:$(CFILES) $(HFILES)
 DEBUG: DEBUGFLAGS = -DDEBUG
 DEBUG: ALL
 
-#this is customary and just deletes all .o files
+# this is customary and just deletes all .o files
 CLEAN:
 	rm *.o
